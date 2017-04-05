@@ -1,4 +1,11 @@
-class UnequipEvent{
+/*
+ * This class is an Event which is triggered when the player attempts to unequip an item
+ *
+ * @author Amos Dufore
+ * @version GroupBorkV1
+ */
+
+class UnequipEvent extends Event{
 	
 	/*
 	 * Constructor for UnequipEvent
