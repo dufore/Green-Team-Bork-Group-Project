@@ -192,6 +192,6 @@ public class Room {
      *
      * @return ArrayList<NPC> the ArrayList containing all of the NPCS in the room
      */
-    ArrayList<NPC> getNPCS(){
+    public ArrayList<NPC> getNPCS(){
     }
 }

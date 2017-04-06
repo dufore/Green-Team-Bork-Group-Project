@@ -183,4 +183,12 @@ public class Dungeon {
         }
         return items.get(primaryItemName);
     }
+
+    /*
+     * Get the NPCs who are in the dungeon
+     *
+     * @return ArrayList<NPC> returns an ArrayList of all the NPCs in the dungeon
+     */
+    public ArrayList<NPC> getNPCS(){
+    }
 }
