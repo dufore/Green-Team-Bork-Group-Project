@@ -1,5 +1,5 @@
 
-package groupborkv1;
+package zeitz_borkv3;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -20,7 +20,6 @@ public class Armor extends Item {
      * The constructor for the Armor class.
      * Called if an Armor item is read into the game.
      * 
-     * @param Item being read in as an Armor item.
      */
     public Armor() {
 

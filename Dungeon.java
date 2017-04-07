@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class Dungeon {
 
@@ -46,6 +47,10 @@ public class Dungeon {
     /**
      * Read from the .bork filename passed, and instantiate a Dungeon object
      * based on it.
+     * @param filename  Get the name of the file
+     * @throws java.io.FileNotFoundException  If file not found, throw exception
+     * @throws zeitz_borkv3.Dungeon.IllegalDungeonFormatException if the format
+     * of the dungeon is wrong, throw exception
      */
     public Dungeon(String filename) throws FileNotFoundException, 
         IllegalDungeonFormatException {
@@ -56,6 +61,11 @@ public class Dungeon {
     /**
      * Read from the .bork filename passed, and instantiate a Dungeon object
      * based on it, including (possibly) the items in their original locations.
+     * @param filename Get the filename
+     * @param initState Boolean value of if this is a new state or not
+     * @throws java.io.FileNotFoundException  If file not found, throw exception
+     * @throws zeitz_borkv3.Dungeon.IllegalDungeonFormatException If format of
+     * file is wrong, throw exception
      */
     public Dungeon(String filename, boolean initState) 
         throws FileNotFoundException, IllegalDungeonFormatException {
@@ -175,6 +185,10 @@ public class Dungeon {
      * Get the Item object whose primary name is passed. This has nothing to
      * do with where the Adventurer might be, or what's in his/her inventory,
      * etc.
+     * @param primaryItemName gets the name of the primary item
+     * @return items.get(primaryItemName) returns the item from item list
+     * @throws zeitz_borkv3.Item.NoItemException If there does not exist an item,
+     * throw no item exception instead
      */
     public Item getItem(String primaryItemName) throws Item.NoItemException {
         
@@ -189,6 +203,6 @@ public class Dungeon {
      *
      * @return ArrayList<NPC> returns an ArrayList of all the NPCs in the dungeon
      */
-    public ArrayList<NPC> getNPCS(){
+    public ArrayList<NonPlayerChar> getNPCS(){
     }
 }

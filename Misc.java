@@ -1,5 +1,5 @@
 
-package groupborkv1;
+package zeitz_borkv3;
 
 
 /**
@@ -15,7 +15,6 @@ public class Misc extends Item {
     /**
      * The constructor for the Misc item class.
      * 
-     * @param Item being read in as Misc item.
      */
     public Misc() {
         

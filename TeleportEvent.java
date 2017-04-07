@@ -1,10 +1,11 @@
+package zeitz_borkv3;
 /*Event class triggered to teleport the player to another room
  *
  * @author Amos Dufore
  * @version GroupBorkV1
  */
 class TeleportEvent extends Event{
-	private Room target
+	private Room target;
 
 	/*Constructor for TeleportEvent
 	 *

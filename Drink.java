@@ -1,5 +1,7 @@
 
-package groupborkv1;
+package zeitz_borkv3;
+
+import java.util.Scanner;
 
 
 /**
@@ -19,7 +21,7 @@ public class Drink extends Item {
      * 
      * @param Item being read in as a Drink item.
      */
-    public Drink() {
+    Drink(Scanner s) throws NoItemException{
         
     }
     

@@ -9,11 +9,12 @@ class Fight{
 	}
 
 	//Uses player and NPC stats and equipment to print the options and health during a fight
-	printFightMessage(){
+	 String printFightMessage(){
+             
 	}
 
 	//called when an attack is launched
 	//@param d damage value passed from weapon in fight
-	attack(int d){
+	String attack(int d){
 	}
 }

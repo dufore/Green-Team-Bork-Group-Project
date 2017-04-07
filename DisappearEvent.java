@@ -1,3 +1,4 @@
+package zeitz_borkv3;
 /*Event type class called when an item is removed from the game
  *
  * @author Amos Dufore

@@ -1,5 +1,5 @@
 
-package groupborkv1;
+package zeitz_borkv3;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -19,7 +19,6 @@ public class Shield extends Item {
     /**
      * The constructor for the Armor class.
      *
-     * @param Item being read in as a Shield item.
      */
     public Shield(){
         

@@ -1,3 +1,4 @@
+package zeitz_borkv3;
 /*This is a class of type Event. It is triggered when score exceeds winning score value or the main objective is completed
  *
  * @author Amos Dufore

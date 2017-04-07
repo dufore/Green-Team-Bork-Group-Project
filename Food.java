@@ -1,5 +1,5 @@
 
-package groupborkv1;
+package zeitz_borkv3;
 
 
 /**
@@ -17,7 +17,6 @@ public class Food extends Item {
      * The constructor for the Food class.
      * Called if a food item is read into the game.
      * 
-     * @param Item being read in as a Food item.
      */
     public Food() {
         

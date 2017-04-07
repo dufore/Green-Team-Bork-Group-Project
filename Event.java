@@ -1,3 +1,4 @@
+package zeitz_borkv3;
 /*The Event class is an abstract class that represents any event that causes a change in the GameState
  *
  *@author Amos Dufore

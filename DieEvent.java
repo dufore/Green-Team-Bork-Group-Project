@@ -1,15 +1,16 @@
+package zeitz_borkv3;
 /*This is an Event class which is triggered when an NPC or Player's health <= 0
  *
  * @author Amos Dufore
  * @version BorkGroupV1
  */
 class DieEvent extends Event{
-	private NPC target;
+	private NonPlayerChar target;
 	/*Constructor for DieEvent
 	 *
 	 * @param t target (null for player)
 	 */
-	DieEvent(NPC t){
+	DieEvent(NonPlayerChar t){
 	}
 
 	/*Called when the event is triggered

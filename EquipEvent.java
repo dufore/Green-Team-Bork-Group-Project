@@ -1,3 +1,4 @@
+package zeitz_borkv3;
 /*
  * This event is triggered when a player attempts to equip an item
  *

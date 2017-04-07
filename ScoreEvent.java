@@ -1,3 +1,4 @@
+package zeitz_borkv3;
 /*
  * This is an Event class which is triggered when a score is achieved
  *

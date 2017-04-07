@@ -1,4 +1,4 @@
-package groupborkv1;
+package zeitz_borkv3;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -20,7 +20,6 @@ public class Weapon extends Item {
     /**
      * The constructor for the Weapon class.
      *
-     * @param Item being read in as a Weapon item.
      */
     public Weapon() {
 

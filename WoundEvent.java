@@ -1,3 +1,4 @@
+package zeitz_borkv3;
 /*This is an Event class which is triggered when damage is taken/given during combat
  *
  * @author Amos Dufore
@@ -5,13 +6,13 @@
  */
 class WoundEvent extends Event{
 	private int damage;
-	private NPC target;
+	private NonPlayerChar target;
 	/*Constructor for WoundEvent
 	 *
 	 *@param t target for damage (NPC or null for the player)
 	 *@param d damage value for wound
 	 */
-	WoundEvent(NPC t,int d){
+	WoundEvent(NonPlayerChar t,int d){
 	}
 
 	/*Called when the event is triggered

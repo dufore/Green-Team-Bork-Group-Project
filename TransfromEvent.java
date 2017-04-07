@@ -1,11 +1,12 @@
+package zeitz_borkv3;
 /*Event class which is triggered to remove an item and replace it with another
  *
  * @author Amos Dufore
  * @version GroupBorkV1
  */
 class TransformEvent extends Event{
-	private item transform
-	private item remove
+	private Item transform;
+	private Item remove;
 	/*Constructor for TransformEvent
 	 *
 	 * @param t item which replaces
