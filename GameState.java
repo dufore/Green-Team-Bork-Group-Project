@@ -8,7 +8,12 @@ import java.io.IOException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-
+/**
+ * Three methods will be added to GameState to account for the players
+ * health, score, and will also let the player know if they have died
+ * and will end the game.
+ * @author James
+ */
 public class GameState {
 
     public static class IllegalSaveFormatException extends Exception {
@@ -162,6 +167,37 @@ public class GameState {
 
     Dungeon getDungeon() {
         return dungeon;
+    }
+    /**
+     * Void method that will be called when player picks
+     * up health item or is damaged.  Takes in an int value
+     * for the health and will add or subtract to the players
+     * total health, field health
+     * @param healthAdded
+     */
+    void addHelath(int healthAdded){
+        
+    }
+    
+    /**
+     * Void method that will be called to add points to
+     * the player score when player earns more points.
+     * Will take in an int parameter and add to players
+     * total score, field score.
+     * @param scoreAdded 
+     */
+    void addScore(int scoreAdded) {
+        
+    }
+    
+    /**
+     * Method that will check to see if the players health is at 0;
+     * if so, method will return a string telling the player they have
+     * died and will end the game.  Returns string value
+     * @return deathString
+     */
+    String die(){
+        return null;
     }
 
 }

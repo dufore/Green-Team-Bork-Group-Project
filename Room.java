@@ -186,4 +186,12 @@ public class Room {
     ArrayList<Item> getContents() {
         return contents;
     }
+
+    /*
+     * getter for NPCS in the room
+     *
+     * @return ArrayList<NPC> the ArrayList containing all of the NPCS in the room
+     */
+    public ArrayList<NonPlayerChar> getNPCS(){
+    }
 }
