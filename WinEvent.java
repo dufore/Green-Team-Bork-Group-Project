@@ -8,7 +8,9 @@ class WinEvent extends Event{
 
 	/*Constructor for WinEvent
 	 */
-	WinEvent(){
+	WinEvent(String w){
+            onTrigger();
+            System.exit(0);
 	}
 
 	/*Called when the Win condition is reached
@@ -18,5 +20,7 @@ class WinEvent extends Event{
 	 * @return String returns continuation/gamefinished message
 	 */
 	String onTrigger(){
+            String won = "Congratulations, you have won Bork!";
+            return won;
 	}
 }
