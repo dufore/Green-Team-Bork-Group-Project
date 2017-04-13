@@ -21,7 +21,9 @@ class TeleportEvent extends Event{
 	 */
 	String onTrigger(){
             GameState.instance().setAdventurersCurrentRoom(this.target);
-            String newRoomString = this.target.describe();
+            String newRoomString = "You have been teleported to "
+                    + this.target.getTitle() + "."
+                    + "/n" + this.target.describe() + "\n";
             return newRoomString;
 	}
 }
