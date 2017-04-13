@@ -15,7 +15,8 @@ class ScoreEvent extends Event{
 	 *
 	 * @param int score takes the amount to be added to the total score
 	 */
-	ScoreEvent(){
+	ScoreEvent(int score){
+            this.score = score;
 	}
 
 	/* Called when the event is triggered
@@ -24,6 +25,10 @@ class ScoreEvent extends Event{
 	 * @return String returns a string containing a score message "Your score increased by 5"
 	 */
 	String onTrigger(){
+            String scoredString;
+            GameState.instance().addScore(score);
+            scoredString = "Your score increased by " + score;
+            return scoredString;
 	}
 }
 

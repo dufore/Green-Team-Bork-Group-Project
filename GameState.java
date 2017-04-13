@@ -34,6 +34,9 @@ public class GameState {
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
+    
+    private int health;
+    private int score;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -44,6 +47,8 @@ public class GameState {
 
     private GameState() {
         inventory = new ArrayList<Item>();
+        health = 100;
+        score = 0;
     }
 
     void restore(String filename) throws FileNotFoundException,
@@ -175,8 +180,8 @@ public class GameState {
      * total health, field health
      * @param healthAdded
      */
-    void addHelath(int healthAdded){
-        
+    void addHealth(int healthAdded){
+        this.health += healthAdded;
     }
     
     /**
@@ -187,7 +192,7 @@ public class GameState {
      * @param scoreAdded 
      */
     void addScore(int scoreAdded) {
-        
+        this.score += scoreAdded;
     }
     
     /**
