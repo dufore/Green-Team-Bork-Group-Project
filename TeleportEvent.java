@@ -12,6 +12,7 @@ class TeleportEvent extends Event{
 	 * @param t Room to teleport the player to
 	 */
 	TeleportEvent(Room t){
+            this.target = t;
 	}
 
 	/*Called when the action is performed to cause a teleportation to happen
@@ -19,5 +20,8 @@ class TeleportEvent extends Event{
 	 * @return String returns a message about your teleportation
 	 */
 	String onTrigger(){
+            GameState.instance().setAdventurersCurrentRoom(this.target);
+            String newRoomString = this.target.describe();
+            return newRoomString;
 	}
 }
