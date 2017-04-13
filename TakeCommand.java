@@ -9,6 +9,7 @@ class TakeCommand extends Command {
         this.itemName = itemName;
     }
 
+    @Override
     public String execute() {
         if (itemName == null || itemName.trim().length() == 0) {
             return "Take what?\n";

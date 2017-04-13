@@ -7,13 +7,12 @@ package zeitz_borkv3;
  * @author James
  */
 public class HealthCommand extends Command{
-    private String health;
     /**
      * Constructor that will construct the HealthCommand object.
      * Takes in a String parameter and sets it to field.
      * @param h
      */
-    HealthCommand(String h){
+    HealthCommand(){
         
     }
     /**
@@ -25,6 +24,9 @@ public class HealthCommand extends Command{
      */
     @Override
     String execute(){
-        return null;
+        int playerHealth = GameState.instance().getHealth();
+        String health = "You currently have " + playerHealth + " health.";
+        
+        return health;
     }
 }

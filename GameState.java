@@ -204,5 +204,13 @@ public class GameState {
     String die(){
         return null;
     }
+    
+    int getScore(){
+        return this.score;
+    }
+    
+    int getHealth(){
+        return this.health;
+    }
 
 }

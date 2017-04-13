@@ -7,14 +7,12 @@ package zeitz_borkv3;
  * @author James
  */
 public class ScoreCommand extends Command{
-    private String score;
     /**
      * Constructor for ScoreCommand class.  Takes in String parameter
      * and will set input value to field.
      * @param score 
      */
-    ScoreCommand(String score){
-        
+    ScoreCommand(){
     }
     /**
      * Execute() method that extends abstract method Execute().
@@ -26,7 +24,10 @@ public class ScoreCommand extends Command{
      */
     @Override
     public String execute(){
-        return null;
+        int playerScore = GameState.instance().getScore();
+        String returnString = "You currently have a score of " + playerScore;
+        
+        return returnString;
     }
     
 }
