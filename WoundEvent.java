@@ -6,13 +6,14 @@ package zeitz_borkv3;
  */
 class WoundEvent extends Event{
 	private int damage;
-	private NonPlayerChar target;
+	//private NonPlayerChar target;
 	/*Constructor for WoundEvent
 	 *
 	 *@param t target for damage (NPC or null for the player)
 	 *@param d damage value for wound
 	 */
-	WoundEvent(NonPlayerChar t,int d){
+	WoundEvent(int d){
+            this.damage = d;
 	}
 
 	/*Called when the event is triggered
@@ -20,6 +21,19 @@ class WoundEvent extends Event{
 	 *
 	 *@return String returns a String damage occured message "'targetName' takes 'damage' damage"
 	 */
+        @Override
 	String onTrigger(){
+            int currHealth = GameState.instance().getHealth();
+            GameState.instance().addHealth(this.damage);
+            int newHealth = GameState.instance().getHealth();
+            String woundString;
+            
+            if(newHealth > currHealth){
+                woundString = "You gained " + this.damage + " amount of health.\n";
+            } else {
+                woundString = "You took " + this.damage + " amount of damage.\n";
+            }
+            
+            return woundString;
 	}
 }
