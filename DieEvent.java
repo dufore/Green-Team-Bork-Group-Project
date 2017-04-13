@@ -11,6 +11,9 @@ class DieEvent extends Event{
 	 * @param t target (null for player)
 	 */
 	DieEvent(NonPlayerChar t){
+            System.out.println(t + " has died!");
+            GameState.instance().getAdventurersCurrentRoom().getNPCS().remove(t);
+            GameState.instance().getDungeon().getNPCS().remove(t);
 	}
 
 	/*Called when the event is triggered
