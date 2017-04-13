@@ -5,12 +5,13 @@ package zeitz_borkv3;
  * @version BorkGroupV1
  */
 class DisappearEvent extends Event{
-	private Item target;
+	private String target;
 	/*Constructor for DisappearEvent
 	 *
 	 * @param t is the target item which is disappearing
 	 */
-	DisappearEvent(){
+	DisappearEvent(String name){
+            this.target = name;
 	}
 
 	/*Called when an action is perfromed which requires an item to be removed from gameplay
@@ -20,5 +21,7 @@ class DisappearEvent extends Event{
 	 * returns String informing of item removal
 	 */
 	String onTrigger(){
+            
+            return null;
 	}
 }

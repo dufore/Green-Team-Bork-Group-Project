@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Dungeon {
 
@@ -204,5 +205,13 @@ public class Dungeon {
      * @return ArrayList<NPC> returns an ArrayList of all the NPCs in the dungeon
      */
     public ArrayList<NonPlayerChar> getNPCS(){
+        return null;
+    }
+    
+    public Room randomRoom(){
+        Random gen = new Random();
+        Object[] roomVals = this.rooms.values().toArray();
+        Object randomRoom = roomVals[gen.nextInt(roomVals.length)];
+        return (Room) randomRoom;
     }
 }
