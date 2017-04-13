@@ -36,6 +36,8 @@ public class Dungeon {
     private Hashtable<String,Room> rooms;
     private Hashtable<String,Item> items;
     private String filename;
+    
+    private ArrayList<String> roomNames;
 
     Dungeon(String name, Room entry) {
         init();
@@ -136,6 +138,7 @@ public class Dungeon {
     private void init() {
         rooms = new Hashtable<String,Room>();
         items = new Hashtable<String,Item>();
+        roomNames = new ArrayList<>();
     }
 
     /*
@@ -175,11 +178,22 @@ public class Dungeon {
     public Room getEntry() { return entry; }
     public String getName() { return name; }
     public String getFilename() { return filename; }
-    public void add(Room room) { rooms.put(room.getTitle(),room); }
+    
+    public void add(Room room) { 
+        rooms.put(room.getTitle(),room);
+        roomNames.add(room.getTitle());
+    }
+    
     public void add(Item item) { items.put(item.getPrimaryName(),item); }
 
     public Room getRoom(String roomTitle) {
         return rooms.get(roomTitle);
+    }
+    
+    public String randomRoom(){
+        Random ran = new Random();
+        String ranRoom = roomNames.get(ran.nextInt(roomNames.size()));
+        return ranRoom;
     }
 
     /**
@@ -206,12 +220,5 @@ public class Dungeon {
      */
     public ArrayList<NonPlayerChar> getNPCS(){
         return null;
-    }
-    
-    public Room randomRoom(){
-        Random gen = new Random();
-        Object[] roomVals = this.rooms.values().toArray();
-        Object randomRoom = roomVals[gen.nextInt(roomVals.length)];
-        return (Room) randomRoom;
     }
 }
