@@ -1,4 +1,3 @@
-
 package zeitz_borkv3;
 
 import java.util.Scanner;
@@ -8,15 +7,18 @@ import java.io.IOException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+
 /**
- * Three methods will be added to GameState to account for the players
- * health, score, and will also let the player know if they have died
- * and will end the game.
+ * Three methods will be added to GameState to account for the players health,
+ * score, and will also let the player know if they have died and will end the
+ * game.
+ *
  * @author James
  */
 public class GameState {
 
     public static class IllegalSaveFormatException extends Exception {
+
         public IllegalSaveFormatException(String e) {
             super(e);
         }
@@ -34,7 +36,7 @@ public class GameState {
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
-    
+
     private int health;
     private int score;
 
@@ -52,7 +54,7 @@ public class GameState {
     }
 
     void restore(String filename) throws FileNotFoundException,
-        IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
+            IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
 
         Scanner s = new Scanner(new FileReader(filename));
 
@@ -63,29 +65,29 @@ public class GameState {
         String dungeonFileLine = s.nextLine();
 
         if (!dungeonFileLine.startsWith(Dungeon.FILENAME_LEADER)) {
-            throw new IllegalSaveFormatException("No '" +
-                Dungeon.FILENAME_LEADER + 
-                "' after version indicator.");
+            throw new IllegalSaveFormatException("No '"
+                    + Dungeon.FILENAME_LEADER
+                    + "' after version indicator.");
         }
 
         dungeon = new Dungeon(dungeonFileLine.substring(
-            Dungeon.FILENAME_LEADER.length()), false);
+                Dungeon.FILENAME_LEADER.length()), false);
         dungeon.restoreState(s);
 
         s.nextLine();  // Throw away "Adventurer:".
         String currentRoomLine = s.nextLine();
         adventurersCurrentRoom = dungeon.getRoom(
-            currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
+                currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
         if (s.hasNext()) {
             String inventoryList = s.nextLine().substring(
-                INVENTORY_LEADER.length());
+                    INVENTORY_LEADER.length());
             String[] inventoryItems = inventoryList.split(",");
             for (String itemName : inventoryItems) {
                 try {
                     addToInventory(dungeon.getItem(itemName));
                 } catch (Item.NoItemException e) {
-                    throw new IllegalSaveFormatException("No such item '" +
-                        itemName + "'");
+                    throw new IllegalSaveFormatException("No such item '"
+                            + itemName + "'");
                 }
             }
         }
@@ -104,10 +106,10 @@ public class GameState {
         w.println(CURRENT_ROOM_LEADER + adventurersCurrentRoom.getTitle());
         if (inventory.size() > 0) {
             w.print(INVENTORY_LEADER);
-            for (int i=0; i<inventory.size()-1; i++) {
+            for (int i = 0; i < inventory.size() - 1; i++) {
                 w.print(inventory.get(i).getPrimaryName() + ",");
             }
-            w.println(inventory.get(inventory.size()-1).getPrimaryName());
+            w.println(inventory.get(inventory.size() - 1).getPrimaryName());
         }
         w.close();
     }
@@ -173,43 +175,57 @@ public class GameState {
     Dungeon getDungeon() {
         return dungeon;
     }
+
     /**
-     * Void method that will be called when player picks
-     * up health item or is damaged.  Takes in an int value
-     * for the health and will add or subtract to the players
-     * total health, field health
+     * Void method that will be called when player picks up health item or is
+     * damaged. Takes in an int value for the health and will add or subtract to
+     * the players total health, field health
+     *
      * @param healthAdded
      */
-    void addHealth(int healthAdded){
+    void addHealth(int healthAdded) {
         this.health += healthAdded;
     }
-    
+
     /**
-     * Void method that will be called to add points to
-     * the player score when player earns more points.
-     * Will take in an int parameter and add to players
-     * total score, field score.
-     * @param scoreAdded 
+     * Void method that will be called to add points to the player score when
+     * player earns more points. Will take in an int parameter and add to
+     * players total score, field score.
+     *
+     * @param scoreAdded
      */
     void addScore(int scoreAdded) {
         this.score += scoreAdded;
     }
-    
+
     /**
-     * Method that will check to see if the players health is at 0;
-     * if so, method will return a string telling the player they have
-     * died and will end the game.  Returns string value
+     * Method that will check to see if the players health is at 0; if so,
+     * method will return a string telling the player they have died and will
+     * end the game. Returns string value
+     *
      * @return deathString
      */
-    String die(){
+    String die() {
         return null;
     }
-    
-    int getScore(){
+
+    /**
+     * Method that will check the player's score and return it to them so that
+     * they can see how far they are.
+     *
+     * @return score
+     */
+    int getScore() {
         return this.score;
     }
-    
-    int getHealth(){
+
+    /**
+     * Method that will check the player's health and return it to them so that
+     * they can see how much health they've lost.
+     *
+     * @return health
+     */
+    int getHealth() {
         return this.health;
     }
 
