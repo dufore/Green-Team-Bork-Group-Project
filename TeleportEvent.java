@@ -19,6 +19,7 @@ class TeleportEvent extends Event{
 	 *
 	 * @return String returns a message about your teleportation
 	 */
+        @Override
 	String onTrigger(){
             GameState.instance().setAdventurersCurrentRoom(this.target);
             String newRoomString = "You have been teleported to "
