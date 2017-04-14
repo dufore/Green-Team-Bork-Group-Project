@@ -12,6 +12,7 @@ public class Item {
     private int weight;
     private String event; //String for the event that is in the file such as Wound, Disappear, Transform, etc.
     private int eventNum; //Some events have values in paranthesis.  Grab that value and store it here to be passed into event constructor
+    private String event2;
     private Hashtable<String,String> messages;
 
 
@@ -49,6 +50,7 @@ public class Item {
                         eventPartThree[1].replace(")", ""); //remove second paranthesis
                         this.eventNum = Integer.parseInt(eventPartThree[1]); //Save number as eventNum
                         this.event = eventPartThree[0]; //Save event
+                        this.event2 = eventPartTwo[1]; //Save second event
                     } else {
                         this.event = eventPartTwo[0]; //Only saving the first one, not sure how to save the second one as well
                     }
