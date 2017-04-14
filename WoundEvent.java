@@ -24,7 +24,7 @@ class WoundEvent extends Event{
         @Override
 	String onTrigger(){
             int currHealth = GameState.instance().getHealth();
-            GameState.instance().addHealth(this.damage);
+            GameState.instance().woundHealth(this.damage);
             int newHealth = GameState.instance().getHealth();
             String woundString;
             

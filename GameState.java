@@ -183,8 +183,8 @@ public class GameState {
      *
      * @param healthAdded
      */
-    void addHealth(int healthAdded) {
-        this.health += healthAdded;
+    void woundHealth(int healthAdded) {
+        this.health -= healthAdded;
     }
 
     /**
