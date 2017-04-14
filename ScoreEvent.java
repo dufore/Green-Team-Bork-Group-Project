@@ -25,6 +25,7 @@ class ScoreEvent extends Event {
 	 *
 	 * @return String returns a string containing a score message "Your score increased by 5"
      */
+    @Override
     String onTrigger() {
         String scoredString;
         GameState.instance().addScore(score);

@@ -21,6 +21,7 @@ class WinEvent extends Event {
 	 *
 	 * @return String returns continuation/gamefinished message
      */
+    @Override
     String onTrigger() {
         String won = "Congratulations, you have won Bork!";
         return won;

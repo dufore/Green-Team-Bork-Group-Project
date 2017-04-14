@@ -28,6 +28,7 @@ class DieEvent extends Event {
 	 * 
 	 * @return String appropriate death message (player/NPC)
      */
+    @Override
     String onTrigger() {
         String diedString;
         if (GameState.instance().getHealth() <= 0) {
