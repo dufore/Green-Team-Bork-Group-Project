@@ -10,7 +10,8 @@ public class Item {
 
     private String primaryName;
     private int weight;
-    private String event;
+    private String event; //String for the event that is in the file such as Wound, Disappear, Transform, etc.
+    private int eventNum; //Some events have values in paranthesis.  Grab that value and store it here to be passed into event constructor
     private Hashtable<String,String> messages;
 
 
@@ -36,20 +37,27 @@ public class Item {
                     Dungeon.SECOND_LEVEL_DELIM + "' after item.");
             }
             String[] verbParts = verbLine.split(":");
-            //For split '[' needs two backslashes, so \\[
-            if(verbParts[0].contains("[")){
-                String[] eventPartOne = verbParts[0].split("\\[");
-                eventPartOne[1].replace("]", "");
-                if(eventPartOne[1].contains(",")){
-                    String[] eventPartTwo = eventPartOne[1].split(",");
-                    messages.put(eventPartOne[0], verbParts[1]);
-                    this.event = eventPartTwo[0]; //Only saving the first one, not sure how to save the second one as well
+            //Hydrate events
+            if(verbParts[0].contains("[")){ //if there exists events declared with brackets
+                String[] eventPartOne = verbParts[0].split("\\["); //Split string on that opening bracket
+                eventPartOne[1].replace("]", ""); //Get rid of the end bracket 
+                if(eventPartOne[1].contains(",")){ //If there are multiple events for item separated by comma
+                    String[] eventPartTwo = eventPartOne[1].split(","); //Split on comma
+                    messages.put(eventPartOne[0], verbParts[1]); //Put item name and message in hashtable
+                    if(eventPartTwo[0].contains("(")){ //If event contains an int value
+                        String[] eventPartThree = eventPartTwo[0].split("\\("); //Split on paranthesis
+                        eventPartThree[1].replace(")", ""); //remove second paranthesis
+                        this.eventNum = Integer.parseInt(eventPartThree[1]); //Save number as eventNum
+                        this.event = eventPartThree[0]; //Save event
+                    } else {
+                        this.event = eventPartTwo[0]; //Only saving the first one, not sure how to save the second one as well
+                    }
                 } else {
-                    messages.put(eventPartOne[0], verbParts[1]);
-                    this.event = eventPartOne[1];
+                    messages.put(eventPartOne[0], verbParts[1]); // Put item name and message in hashtable
+                    this.event = eventPartOne[1]; //If there is only one event, save it as the event String
                 }
             } else {
-                messages.put(verbParts[0],verbParts[1]);
+                messages.put(verbParts[0],verbParts[1]); //Do the default
             }
             
             
