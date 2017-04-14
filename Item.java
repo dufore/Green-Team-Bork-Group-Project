@@ -10,6 +10,7 @@ public class Item {
 
     private String primaryName;
     private int weight;
+    private String event;
     private Hashtable<String,String> messages;
 
 
@@ -35,7 +36,23 @@ public class Item {
                     Dungeon.SECOND_LEVEL_DELIM + "' after item.");
             }
             String[] verbParts = verbLine.split(":");
-            messages.put(verbParts[0],verbParts[1]);
+            //For split '[' needs two backslashes, so \\[
+            if(verbParts[0].contains("[")){
+                String[] eventPartOne = verbParts[0].split("\\[");
+                eventPartOne[1].replace("]", "");
+                if(eventPartOne[1].contains(",")){
+                    String[] eventPartTwo = eventPartOne[1].split(",");
+                    messages.put(eventPartOne[0], verbParts[1]);
+                    this.event = eventPartTwo[0]; //Only saving the first one, not sure how to save the second one as well
+                } else {
+                    messages.put(eventPartOne[0], verbParts[1]);
+                    this.event = eventPartOne[1];
+                }
+            } else {
+                messages.put(verbParts[0],verbParts[1]);
+            }
+            
+            
             
             verbLine = s.nextLine();
         }
