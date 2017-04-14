@@ -21,7 +21,7 @@ public class ScoreCommand extends Command{
 	    }else if(playerScore >= 15 && playerScore < 30){
 		    playerRank = "D Class Adventurer";
 	    }else if(playerScore >= 30 && playerScore < 45){
-		    playerRank = "C Class Adventurer"
+		    playerRank = "C Class Adventurer";
 	    }else if(playerScore >= 45 && playerScore < 60){
 		    playerRank = "B Class Adventurer";
 	    }else if(playerScore >= 60 && playerScore < 90){
@@ -46,7 +46,7 @@ public class ScoreCommand extends Command{
     @Override
     public String execute(){
 	    
-        String returnString = "You currently have a score of " + playerScore ". Rank: "+ playerRank;
+        String returnString = "You currently have a score of " + playerScore + ". Rank: "+ playerRank;
         
         return returnString;
     }

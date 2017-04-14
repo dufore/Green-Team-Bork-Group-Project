@@ -44,7 +44,7 @@ public class CommandFactory {
 		return new ScoreCommand();
 	}
 	if (verb.equals("health")){
-		return new HealthCommand)();
+		return new HealthCommand();
 	}
         if (parts.length == 2) {
             return new ItemSpecificCommand(verb, noun);
