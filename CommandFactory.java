@@ -21,6 +21,7 @@ public class CommandFactory {
     }
 
     public Command parse(String command) {
+	command = command.toLowerCase();    
         String parts[] = command.split(" ");
         String verb = parts[0];
         String noun = parts.length >= 2 ? parts[1] : "";
@@ -39,6 +40,12 @@ public class CommandFactory {
         if (MOVEMENT_COMMANDS.contains(verb)) {
             return new MovementCommand(verb);
         }
+	if (verb.equals("score")){
+		return new ScoreCommand();
+	}
+	if (verb.equals("health")){
+		return new HealthCommand)();
+	}
         if (parts.length == 2) {
             return new ItemSpecificCommand(verb, noun);
         }

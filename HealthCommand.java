@@ -7,13 +7,29 @@ package zeitz_borkv3;
  * @author James
  */
 public class HealthCommand extends Command{
-    /**
+    int playerHealth;
+    String fuzzyString;
+	/**
      * Constructor that will construct the HealthCommand object.
      * Takes in a String parameter and sets it to field.
      * @param h
      */
     HealthCommand(){
-        
+        playerHealth = GameState.instance().getHealth();
+	if(playerHealth == 100){
+		fuzzyString = "You are the embodiment of health";
+	} else if (playerHealth >= 75 && playerHealth < 100){
+		fuzzyString = "You've taken a small amount of damage";
+	} else if (playerHealth >= 50 && playerHealth < 75){
+		fuzzyString = "You're feeling a bit worse for the wear";
+	} else if (playerHealth >= 25 && playerHealth < 50){
+		fuzzyString = "You can no longer walk straight, every movement is painful";
+	} else if (playerHealth >= 1 && playerHealth < 25){
+		fuzzyString = "Standing is nearly impossible. Your vision is going red with the pain";
+	} else if (playerHealth == 0){
+		fuzzyString = "You are dead";
+	}
+
     }
     /**
      * Execute() method that overrides the abstract method execute() in the
@@ -23,10 +39,7 @@ public class HealthCommand extends Command{
      * @return health
      */
     @Override
-    String execute(){
-        int playerHealth = GameState.instance().getHealth();
-        String health = "You currently have " + playerHealth + " health.";
-        
-        return health;
+    String execute(){  
+        return fuzzyString;
     }
 }
