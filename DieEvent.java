@@ -7,20 +7,27 @@ package zeitz_borkv3;
  */
 class DieEvent extends Event {
 
-   // private NonPlayerChar target;
+    // private NonPlayerChar target;
+    String diedString;
 
     /*Constructor for DieEvent
 	 *
 	 * @param t target (null for player)
      */
-   // DieEvent(NonPlayerChar t) {
-     //   String died = onTrigger();
-       // if (died.equals("You have died! Game Over!")) {
-         //  System.exit(0);
-       // } else {
-         //   GameState.instance().getAdventurersCurrentRoom().getNPCS().remove(t);
-          //  GameState.instance().getDungeon().getNPCS().remove(t);
-        //}
+    DieEvent() {
+        if (diedString.startsWith("You")) {
+            System.exit(0);
+        }
+    }
+
+    // DieEvent(NonPlayerChar t) {
+    //   String died = onTrigger();
+    // if (died.equals("You have died! Game Over!")) {
+    //  System.exit(0);
+    // } else {
+    //   GameState.instance().getAdventurersCurrentRoom().getNPCS().remove(t);
+    //  GameState.instance().getDungeon().getNPCS().remove(t);
+    //}
     //}
 
     /*Called when the event is triggered
@@ -30,7 +37,6 @@ class DieEvent extends Event {
      */
     @Override
     String onTrigger() {
-        String diedString;
         if (GameState.instance().getHealth() <= 0) {
             diedString = "You have died! Game Over!";
         } else {
