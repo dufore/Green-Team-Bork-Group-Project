@@ -218,7 +218,7 @@ public class Dungeon {
      *
      * @return ArrayList<NPC> returns an ArrayList of all the NPCs in the dungeon
      */
-    public ArrayList<NonPlayerChar> getNPCS(){
-        return null;
-    }
+    //public ArrayList<NonPlayerChar> getNPCS(){
+      //  return null;
+    //}
 }
