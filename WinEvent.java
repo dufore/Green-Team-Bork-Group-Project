@@ -6,13 +6,12 @@ package zeitz_borkv3;
  * @version BorkGroupV1
  */
 class WinEvent extends Event {
-
+    
+    String won = "Congratulations, you have won Bork!";
+    
     /*Constructor for WinEvent
      */
     WinEvent(String w) {
-        if (w.equals(onTrigger())) {
-            System.exit(0);
-        }
     }
 
     /*Called when the Win condition is reached
@@ -23,7 +22,6 @@ class WinEvent extends Event {
      */
     @Override
     String onTrigger() {
-        String won = "Congratulations, you have won Bork!";
         return won;
     }
 }
