@@ -13,6 +13,7 @@ class Fight{
             int i = 0;
             while(i<1){
                 System.out.println("You currently have " + equipped + " equipped.");
+                System.out.println();
             }
 	}
 
