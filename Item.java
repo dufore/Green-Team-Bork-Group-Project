@@ -82,4 +82,16 @@ public class Item {
     public String toString() {
         return primaryName;
     }
+    
+    public int getEventNum(){
+        return this.eventNum;
+    }
+    
+    public String getEvent(){
+        return this.event;
+    }
+    
+    public String getEventTwo(){
+        return this.event2;
+    }
 }

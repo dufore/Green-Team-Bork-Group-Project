@@ -35,6 +35,7 @@ public class GameState {
     private static GameState theInstance;
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
+    private Item[] equipped;
     private Room adventurersCurrentRoom;
 
     private int health;
@@ -51,6 +52,7 @@ public class GameState {
         inventory = new ArrayList<Item>();
         health = 100;
         score = 0;
+        equipped = new Item[2];
     }
 
     void restore(String filename) throws FileNotFoundException,
@@ -227,6 +229,13 @@ public class GameState {
      */
     int getHealth() {
         return this.health;
+    }
+    
+    String getEquipped(){
+        for (Item item : this.equipped) {
+            return item.getPrimaryName();
+        }
+        return null;
     }
 
 }
