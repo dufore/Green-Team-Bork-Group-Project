@@ -7,14 +7,14 @@ package zeitz_borkv3;
  * @author James
  */
 public class TalkCommand extends Command{
-    private String talk;
+    private NonPlayerChar NPC;
     /**
      * Constructor that will construct the TalkCommand object.
      * Takes in a String parameter and sets it to field.
      * @param item
      */
-    TalkCommand(String talk){
-        
+    TalkCommand(NonPlayerChar NonPC){
+        this.NPC = NonPC;
     }
     /**
      * Execute() method that overrides the abstract method execute() in the
@@ -24,6 +24,7 @@ public class TalkCommand extends Command{
      */
     @Override
     String execute(){
-        return null;
+        String returnVal = this.NPC.getMessage();
+        return returnVal;
     }
 }
