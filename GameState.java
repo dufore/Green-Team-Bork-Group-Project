@@ -237,5 +237,19 @@ public class GameState {
         }
         return null;
     }
+    
+    String addItemToEquip(Item i){
+        String itemAdded;
+        if(this.equipped.length == 0){
+            this.equipped[0] = i;
+            itemAdded = "You have equipped " + i.getPrimaryName();
+        } else if (this.equipped.length == 1){
+            this.equipped[1] = i;
+            itemAdded = "You have equipped " + i.getPrimaryName();
+        } else {
+            itemAdded = "You cannot equip anymore items.";
+        }
+        return itemAdded;
+    }
 
 }
