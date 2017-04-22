@@ -7,14 +7,14 @@ package zeitz_borkv3;
  * @author James
  */
 public class GiveCommand extends Command{
-    private String item;
+    private Item item;
     /**
      * Constructor that will construct the GiveCommand object.
      * Takes in a String parameter and sets it to field.
      * @param item
      */
-    GiveCommand(String item){
-        
+    GiveCommand(Item item){
+        this.item = item;
     }
     /**
      * Execute() method that overrides the abstract method execute() in the
@@ -26,6 +26,13 @@ public class GiveCommand extends Command{
      */
     @Override
     String execute(){
-        return null;
+        String giveString;
+        if(GameState.instance().getInventoryNames().contains(this.item.getPrimaryName())){
+            GameState.instance().removeFromInventory(this.item);
+            giveString = "You have given " + this.item.getPrimaryName();
+        } else {
+            giveString = "You do not have " + this.item.getPrimaryName() + " to give";
+        }
+        return giveString;
     }
 }
