@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Three methods will be added to GameState to account for the players health,
@@ -250,6 +252,19 @@ public class GameState {
             itemAdded = "You cannot equip anymore items.";
         }
         return itemAdded;
+    }
+    
+    String removeItemFromEquip(Item i){
+        String itemRemoved;
+        if(Arrays.asList(this.equipped).contains(i)){
+            List<Item> list = new ArrayList<Item>(Arrays.asList(this.equipped));
+            list.removeAll(Arrays.asList(i));
+            this.equipped = list.toArray(this.equipped);
+            itemRemoved = "You have unequipped " + i.getPrimaryName();
+        } else {
+            itemRemoved = "You do not have " + i.getPrimaryName() + " equipped";
+        }
+        return itemRemoved;
     }
 
 }
