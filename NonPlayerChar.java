@@ -2,6 +2,7 @@
 package zeitz_borkv3;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * This is a class of type NonPlayerChar.  It is a class that holds all 
@@ -23,13 +24,29 @@ public class NonPlayerChar {
     private Item toGive;
     private String name;
     
+    
+    public NonPlayerChar(Scanner S){
+        
+    }
+    
+    private void init(){
+        this.hasTalked = false;
+    }
      /**
      * A method to get the message of what the NPC is saying to the player.
      * 
+     * @param keyMess
      * @return The String message to the player from the NPC.
      */ 
     public String getMessage(){
-        
+        String message;
+        if(hasTalked){
+            message = this.messages.get(1);
+        } else {
+            message = this.messages.get(0);
+        }
+        hasTalked = true;
+        return message;
     }
     
      /**
@@ -38,7 +55,7 @@ public class NonPlayerChar {
      * @return The int of how strong the NPCs attack is.
      */
     public int getAttack(){
-        
+        return this.attack;
     }
         
      /**
@@ -47,7 +64,7 @@ public class NonPlayerChar {
      * @return The int of how high the defense of the NPC is.
      */
     public int getDefense(){
-        
+        return this.defense;
     }
         
      /**
@@ -55,8 +72,8 @@ public class NonPlayerChar {
      * 
      * @return The Item object that the NPC wants.
      */
-    public Item getWanted() {
-        
+    public String getWanted() {
+        return this.wanted.getPrimaryName();
     }
         
      /**
@@ -65,7 +82,7 @@ public class NonPlayerChar {
      * @return The Item object that the NPC will give.
      */
     public Item getToGive(){
-        
+        return this.toGive;
     }
         
      /**
@@ -73,8 +90,19 @@ public class NonPlayerChar {
      * 
      * @return The ArrayList of items in the NPCs inventory.
      */
-    public ArrayList<Item> getEquipped(){
-        
+    public String getEquipped(){
+        for(Item i : this.equipped){
+            return i.getPrimaryName();
+        }
+        return null;
+    }
+    
+    public int getHealth(){
+        return this.health;
+    }
+    
+    public String getName(){
+        return this.name;
     }
     
 }
