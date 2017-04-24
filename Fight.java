@@ -25,8 +25,8 @@ class Fight {
                 if (myTurn) { // if myTurn then player attacks
                     System.out.println("It is your turn.");
                     System.out.println("You currently have " + itemName + " equipped.");
-                    if (myWeapon.getEvent().equals("Attack") ||
-                            myWeapon.getEventTwo().equals("Attack")) { //checks if item has an attack event
+                    if (myWeapon.getEvent().equals("attack") ||
+                            myWeapon.getEventTwo().equals("attack")) { //checks if item has an attack event
                         attackValue = myWeapon.getEventNum(); // makes the attack value the eventNum
                         attack(attackValue); // attacks the npc
                     } else {
