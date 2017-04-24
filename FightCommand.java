@@ -14,7 +14,7 @@ public class FightCommand extends Command{
      * @param f 
      */
     FightCommand(String f){
-        
+        this.fight = f;
     }
     /**
      * Execute() method that overrides the abstract method execute() in the
