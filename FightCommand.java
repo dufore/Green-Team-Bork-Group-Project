@@ -69,9 +69,9 @@ public class FightCommand extends Command {
                 GameState.instance().removeNPC(npc);
             }
 
-        } catch (NonPlayerChar.NoNPCException ex) {
+        } catch (NonPlayerChar.NoNPCException e) {
             return npcName + " is not here!";
-        } catch (Item.NoItemException ex) {
+        } catch (Item.NoItemException e) {
         }
         return null;
     }
