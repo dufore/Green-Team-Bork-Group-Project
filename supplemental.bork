@@ -1,0 +1,81 @@
+Hall of Colors
+Group Bork v1.0
+===
+Items:
+***
+Weapons:
+Bomb 95 50
+examine: The bomb is a heavy, gilstening black sphere. On the top appears to be some form of detonator.
+kick[Wound(2)]:Ouch! That hurt your foot.
+detonate[Die]:An ear-splitting halo of shrapnel kills you and seriously degrades the room's interior.
+---
+ShortSword 15 12
+Eat[Disappear,Wound(150)]:Ouch!
+---
+LightSaber 5 27
+Eat[Disappear,Wound(2)]:Ouch!
+---
+***
+Armor:
+JediRobe 10 10
+---
+***
+Food:
+donut 10 5
+examine:A delicious looking donut with rainbow sprinkles on top.
+stomp:The donut is now smooshed.
+---
+SackOfPotatoes 25 15
+---
+***
+Drink:
+DrPepper 10 1
+kick:The can skitters down the hallway.
+shake:A liquid fizzes menacingly inside the can.
+---
+===
+Npcs:
+Stephen
+100
+20
+20
+Inventory:StarWarsMagazine,SackOfPotatoes,Bomb
+Equipped:LightSaber,JediRobe
+Messages:Hello there. I am Stephen Davies and I love Star Wars so much. I even learned how to fight with a lightsaver. Do you want to fight?,Fight me!
+Trades:SackOfPotatoes,Bomb
+---
+Ogre
+40 
+10
+5
+Inventory:SackOfPotatoes
+Equipped:ShortSword
+Messages:GREEN ROOM IS MINE,GREEEN
+---
+===
+Rooms:
+Red Room
+Contents:donut
+The walls of this room are painted red. There is a strange man standing in the corner. A door to the west.
+---
+Green Room
+Contents:SackOfPotatoes
+Npcs:Ogre
+The walls of the room have been colored green with crayons. An ogre is standing with his back turned to you. There is a dorrway to the east and to the south.
+---
+White Room
+Contents:ShortSword
+Npcs:Stephen
+This room's walls are padded and are glaringly white. There is a doorway to the north.
+---
+===
+Exits:
+Red Room
+w
+Green Room
+---
+Green Room
+s
+White Room
+---
+===
