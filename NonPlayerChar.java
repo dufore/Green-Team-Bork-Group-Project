@@ -13,6 +13,8 @@ import java.util.Scanner;
  */
 public class NonPlayerChar {
     
+	static class NoNPCException extends Exception {}
+
     private int health;
     private ArrayList<Item> inventory;
     private ArrayList<Item> equipped;
@@ -24,9 +26,67 @@ public class NonPlayerChar {
     private Item toGive;
     private String name;
     
-    
-    public NonPlayerChar(Scanner S){
-        
+    //Variables relating to file formatting
+    public static String INVENTORY_MARKER = "Inventory:";
+    public static String EQUIPPED_MARKER = "Equipped:";
+    public static String MESSAGES_MARKER = "Messages:";
+    public static String TRADE_MARKER = "Trades:";
+
+    public NonPlayerChar(Scanner s,Dungeon d){
+        name = s.nextLine();
+	health = s.nextLine();
+	attack = s.nextLine();
+	defense = s.nextLine();
+
+	line = s.nextLine();
+	if (line.startsWith(INVENTORY_MARKER)) {
+		String itemList = line.substring(INVENTORY_MARKER.length());
+		String[] itemNames = itemList.split(",");
+		for (String itemName : itemNames) {
+			try{
+				inventory.add(d.getItem(itemName));
+			} catch (Item.NoItemException e) {
+				throw new Dungeon.IllegalDungeonFormatException(
+					"No such item '" + itemName + "'");
+			}
+		}
+		line = s.nextLine();
+	}
+
+	if (line.startsWith(EQUIPPED_MARKER)) {
+		String itemList = line.substring(EQUIPPED_MARKER.length());
+		String[] itemNames = itemList.split(",");
+		for (String itemName : itemNames) {
+			try{
+				equipped.add(d.getItem(itemName));
+			} catch (Item.NoItemException e) {
+				throw new Dungeon.IllegalDungeonFormatException(
+						"No such item '" + itemName + "'");
+			}
+		}
+		line = s.nextLine();
+	}
+
+	if (line.startsWith(MESSAGES_MARKER)) {
+		String messagePair = line.substring(MESSAGES_MARKER.length());
+		String[] messageArray = messagePair.split(",");
+		messages = new ArrayList<String>();
+		messages.add(messageArray[0]);
+		messages.add(messageArray[1]);
+		line = s.nextLine();
+	}
+
+	if(line.startsWith(TRADE_MARKER)) {
+		String itemList = line.substring(TRADE_MARKER.length());
+		String[] itemNames = itemList.split(",");
+		wanted = itemNames[0];
+		toGive = itemNames[1];
+		line = s.nextLine();
+	}
+	
+
+			
+
     }
     
     private void init(){
