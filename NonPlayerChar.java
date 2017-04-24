@@ -165,4 +165,8 @@ public class NonPlayerChar {
         return this.name;
     }
     
+    void woundHealth(int healthAdded) {
+        this.health -= healthAdded;
+    }
+    
 }
