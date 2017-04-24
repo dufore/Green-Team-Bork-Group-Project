@@ -26,6 +26,7 @@ public class Dungeon {
     public static String ROOMS_MARKER = "Rooms:";
     public static String EXITS_MARKER = "Exits:";
     public static String ITEMS_MARKER = "Items:";
+    public static String NPC_MARKER = "Npcs:";
     
     // Variables relating to game state (.sav) storage.
     static String FILENAME_LEADER = "Dungeon file: ";
@@ -110,9 +111,8 @@ public class Dungeon {
 	try {
 		// Instantiate NonPlayerchars
 		while(true)   
-			addNPC(new NonPlayerChar(s, this));
-		}
-	} catch (NonPlayerChar.NoNPCException e) { /* end of NPCs */ }
+			add(new NonPlayerChar(s, this));
+		} catch (NonPlayerChar.NoNPCException e) { /* end of NPCs */ }
 
         // Throw away Rooms starter.
         if (!s.nextLine().equals(ROOMS_MARKER)) {

@@ -32,11 +32,20 @@ public class NonPlayerChar {
     public static String MESSAGES_MARKER = "Messages:";
     public static String TRADE_MARKER = "Trades:";
 
-    public NonPlayerChar(Scanner s,Dungeon d){
-        name = s.nextLine();
-	health = s.nextLine();
-	attack = s.nextLine();
-	defense = s.nextLine();
+    public static String LOW_LEVEL_DELIMITER = "---";
+    public static String HIGH_LEVEL_DELIMITER = "===";
+
+    public NonPlayerChar(Scanner s,Dungeon d) throws NoNPCException,
+	   Dungeon.IllegalDungeonFormatException{
+		   String line = s.nextLine();
+		   if(line.equals(HIGH_LEVEL_DELIMITER)){
+			   throw new NoNPCException();
+		   }
+
+        name = line;
+	health = Integer.parseInt(s.nextLine());
+	attack = Integer.parseInt(s.nextLine());
+	defense = Integer.parseInt(s.nextLine());
 
 	line = s.nextLine();
 	if (line.startsWith(INVENTORY_MARKER)) {
@@ -79,8 +88,13 @@ public class NonPlayerChar {
 	if(line.startsWith(TRADE_MARKER)) {
 		String itemList = line.substring(TRADE_MARKER.length());
 		String[] itemNames = itemList.split(",");
+		try{
 		wanted = itemNames[0];
 		toGive = itemNames[1];
+		} catch (Item.NoItemException e) {
+			throw new Dungeon.IllegalDungeonFormatException(
+					"No such item '" + itemList + "'");
+		}
 		line = s.nextLine();
 	}
 	
