@@ -89,8 +89,8 @@ public class NonPlayerChar {
 		String itemList = line.substring(TRADE_MARKER.length());
 		String[] itemNames = itemList.split(",");
 		try{
-		wanted = itemNames[0];
-		toGive = itemNames[1];
+		wanted = d.getItem(itemNames[0]);
+		toGive = d.getItem(itemNames[1]);
 		} catch (Item.NoItemException e) {
 			throw new Dungeon.IllegalDungeonFormatException(
 					"No such item '" + itemList + "'");
