@@ -206,15 +206,16 @@ public class GameState {
 
     /**
      * Method that will check to see if the players health is at 0; if so,
-     * method will return a string telling the player they have died and will
-     * end the game. Returns string value
+     * method will print strings telling the player their score, 
+     * they have died and will end the game.
      *
-     * @return deathString
      */
-    String die() {
-        return null;
+    void die() {
+        System.out.println("You have died.");
+        System.out.println("Your score is " + score);
+        System.exit(0);
     }
-
+    
     /**
      * Method that will check the player's score and return it to them so that
      * they can see how far they are.
