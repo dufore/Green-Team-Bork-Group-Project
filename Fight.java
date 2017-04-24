@@ -1,10 +1,12 @@
-package zeitz_borkv3;
+//package zeitz_borkv3;
 
 /*This class is for creating an object to facilitate every fight that occurs during gameplay.
  *
  * @author Amos Dufore
  * @version GroupBorkV1
  */
+
+/*
 class Fight {
 
     private NonPlayerChar NPC;
@@ -21,13 +23,12 @@ class Fight {
             Item myWeapon = GameState.instance().getItemFromInventoryNamed(itemName); //turns string into item
             int attackValue = 0; //attack value
             
-            while (NPC.getHealth() != 0 && GameState.instance().getHealth() != 0) {
+            while (NPC.getHealth() > 0 && GameState.instance().getHealth() > 0) {
                 if (myTurn) { // if myTurn then player attacks
                     System.out.println("It is your turn.");
                     System.out.println("You currently have " + itemName + " equipped.");
                     
-                    if (myWeapon.getEvent().equals("attack") ||
-                            myWeapon.getEventTwo().equals("attack")) { //checks if item has an attack event
+                    if (myWeapon.getEvent().equals("attack")) { //checks if item has an attack event
                         attackValue = myWeapon.getEventNum(); // makes the attack value the eventNum
                         attack(attackValue); // attacks the npc
                     } else {
@@ -49,6 +50,9 @@ class Fight {
             System.out.println(NPC.getName() + "is not in this room.");
         } catch (Item.NoItemException e) { // if the player tries to attack with item they don't have
             System.out.println("You don't have that!");
+        }
+        if(GameState.instance().getHealth() < 0) {
+            GameState.instance().die();
         }
     }
 
