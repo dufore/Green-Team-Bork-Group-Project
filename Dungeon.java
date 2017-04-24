@@ -35,6 +35,7 @@ public class Dungeon {
     private Room entry;
     private Hashtable<String,Room> rooms;
     private Hashtable<String,Item> items;
+    private Hashtable<String,NonPlayerChar> NPCs;
     private String filename;
     
     private ArrayList<String> roomNames;
@@ -100,6 +101,19 @@ public class Dungeon {
             }
         } catch (Item.NoItemException e) {  /* end of items */ }
 
+	// Throw away NPC starter
+	if (!s.nextLine().equals(NPC_MARKER)) {
+		throw new IllegalDungeonFormatException("No '" +
+			NPC_MARKER + "' line where expected.");
+	}
+
+	try {
+		// Instantiate NonPlayerchars
+		while(true)   
+			addNPC(new NonPlayerChar(s, this));
+		}
+	} catch (NonPlayerChar.NoNPCException e) { /* end of NPCs */ }
+
         // Throw away Rooms starter.
         if (!s.nextLine().equals(ROOMS_MARKER)) {
             throw new IllegalDungeonFormatException("No '" +
@@ -139,6 +153,7 @@ public class Dungeon {
         rooms = new Hashtable<String,Room>();
         items = new Hashtable<String,Item>();
         roomNames = new ArrayList<>();
+	NPCs = new Hashtable<String,NonPlayerChar>();
     }
 
     /*
@@ -185,6 +200,8 @@ public class Dungeon {
     }
     
     public void add(Item item) { items.put(item.getPrimaryName(),item); }
+
+    public void add(NonPlayerChar NPC) { NPCs.put(NPC.getName(),NPC); }
 
     public Room getRoom(String roomTitle) {
         return rooms.get(roomTitle);
