@@ -25,6 +25,7 @@ class Fight {
                 if (myTurn) { // if myTurn then player attacks
                     System.out.println("It is your turn.");
                     System.out.println("You currently have " + itemName + " equipped.");
+                    
                     if (myWeapon.getEvent().equals("attack") ||
                             myWeapon.getEventTwo().equals("attack")) { //checks if item has an attack event
                         attackValue = myWeapon.getEventNum(); // makes the attack value the eventNum
@@ -33,6 +34,7 @@ class Fight {
                         attackValue = 1;
                         attack(attackValue); // attacks npc
                     }
+                    
                     printFightMessage();
                     myTurn = false; // makes myTurn false so the npc attacks next
                     
@@ -42,6 +44,7 @@ class Fight {
                     myTurn = true; // makes myTurn true so the Player attacks next
                 }
             }
+            
         } catch (NonPlayerChar.NoNPCException e) { // if the npc is not in the room
             System.out.println(NPC.getName() + "is not in this room.");
         } catch (Item.NoItemException e) { // if the player tries to attack with item they don't have
