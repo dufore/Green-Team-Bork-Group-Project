@@ -20,13 +20,14 @@ class Fight {
             this.itemName = itemName; //gets the item name 
             Item myWeapon = GameState.instance().getItemFromInventoryNamed(itemName); //turns string into item
             int attackValue = 0; //attack value
-
+            
             while (NPC.getHealth() != 0 && GameState.instance().getHealth() != 0) {
                 if (myTurn) { // if myTurn then player attacks
                     System.out.println("It is your turn.");
                     System.out.println("You currently have " + itemName + " equipped.");
-                    if (myWeapon instanceof Weapon) { //checks if item is a weapon
-                        attackValue = ((Weapon) myWeapon).getAttack();
+                    if (myWeapon.getEvent().equals("Attack") ||
+                            myWeapon.getEventTwo().equals("Attack")) { //checks if item has an attack event
+                        attackValue = myWeapon.getEventNum(); // makes the attack value the eventNum
                         attack(attackValue); // attacks the npc
                     } else {
                         attackValue = 1;

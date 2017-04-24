@@ -8,11 +8,11 @@ kick[Wound(2)]:Ouch! That hurt your foot.
 detonate[Die]:An ear-splitting halo of shrapnel kills you and seriously degrades the room's interior.
 ---
 ShortSword 15 
-Attack:12
+attack[Fight(12)]
 Eat[Disappear,Wound(150)]:Ouch!
 ---
 LightSaber 5 
-Attack:27
+attack[Fight(27)]
 Eat[Disappear,Wound(2)]:Ouch!
 ---
 JediRobe 10 
@@ -30,7 +30,7 @@ EmptyCan 1
 kick:The can skitters down the hallway.
 ---
 DrPepper 10 
-eat[Transform(EmptyCan),Wound(-1)]:Fizzy.
+drink[Transform(EmptyCan),Wound(-1)]:Fizzy.
 kick:The can skitters down the hallway.
 shake:A liquid fizzes menacingly inside the can.
 ---
