@@ -2,34 +2,35 @@ Hall of Colors
 Group Bork v1.0
 ===
 Items:
-***
-Weapons:
-Bomb 95 50
+Bomb 50
 examine: The bomb is a heavy, gilstening black sphere. On the top appears to be some form of detonator.
 kick[Wound(2)]:Ouch! That hurt your foot.
 detonate[Die]:An ear-splitting halo of shrapnel kills you and seriously degrades the room's interior.
 ---
-ShortSword 15 12
+ShortSword 15 
+Attack:12
 Eat[Disappear,Wound(150)]:Ouch!
 ---
-LightSaber 5 27
+LightSaber 5 
+Attack:27
 Eat[Disappear,Wound(2)]:Ouch!
 ---
-***
-Armor:
-JediRobe 10 10
+JediRobe 10 
+Defense:10
 ---
-***
-Food:
-donut 10 5
+donut 10 
+eat[Disappear,Wound(-5)]:YUM!
 examine:A delicious looking donut with rainbow sprinkles on top.
 stomp:The donut is now smooshed.
 ---
-SackOfPotatoes 25 15
+SackOfPotatoes 25 
+eat[Disappear,Wound(-15)]:That was a lot of potatoes.
 ---
-***
-Drink:
-DrPepper 10 1
+EmptyCan 1
+kick:The can skitters down the hallway.
+---
+DrPepper 10 
+eat[Transform(EmptyCan),Wound(-1)]:Fizzy.
 kick:The can skitters down the hallway.
 shake:A liquid fizzes menacingly inside the can.
 ---
@@ -41,7 +42,7 @@ Stephen
 20
 Inventory:StarWarsMagazine,SackOfPotatoes,Bomb
 Equipped:LightSaber,JediRobe
-Messages:Hello there. I am Stephen Davies and I love Star Wars so much. I even learned how to fight with a lightsaver. Do you want to fight?,Fight me!
+Messages:Hello there. I am Stephen Davies and I love Star Wars so much. I even learned how to fight with a lightsaber. Do you want to fight?,Fight me!
 Trades:SackOfPotatoes,Bomb
 ---
 Ogre
