@@ -39,6 +39,8 @@ public class GameState {
     private ArrayList<Item> inventory;
     private Item[] equipped;
     private Room adventurersCurrentRoom;
+    
+    private ArrayList<NonPlayerChar> NPCs;
 
     private int health;
     private int score;
@@ -265,6 +267,14 @@ public class GameState {
             itemRemoved = "You do not have " + i.getPrimaryName() + " equipped";
         }
         return itemRemoved;
+    }
+    
+    void removeNPC(NonPlayerChar t){
+        if(this.NPCs.contains(t)){
+            this.NPCs.remove(t);
+        } else {
+            System.out.println("NPC does not exist here.");
+        }
     }
 
 }

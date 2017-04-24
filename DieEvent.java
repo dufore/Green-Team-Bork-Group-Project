@@ -20,15 +20,14 @@ class DieEvent extends Event {
         }
     }
 
-    // DieEvent(NonPlayerChar t) {
-    //   String died = onTrigger();
-    // if (died.equals("You have died! Game Over!")) {
-    //  System.exit(0);
-    // } else {
-    //   GameState.instance().getAdventurersCurrentRoom().getNPCS().remove(t);
-    //  GameState.instance().getDungeon().getNPCS().remove(t);
-    //}
-    //}
+     DieEvent(NonPlayerChar t) {
+        String died = onTrigger();
+        if (died.equals("You have died! Game Over!")) {
+        System.exit(0);
+        } else {
+            GameState.instance().removeNPC(t);
+        }
+    }
 
     /*Called when the event is triggered
 	 * Remove NPC from room
