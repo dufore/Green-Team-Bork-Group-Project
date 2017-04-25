@@ -19,15 +19,15 @@ public class HealthCommand extends Command{
 	if(playerHealth == 100){
 		fuzzyString = "You are the embodiment of health \n";
 	} else if (playerHealth >= 75 && playerHealth < 100){
-		fuzzyString = "You've taken a small amount of damage";
+		fuzzyString = "You've taken a small amount of damage \n";
 	} else if (playerHealth >= 50 && playerHealth < 75){
-		fuzzyString = "You're feeling a bit worse for the wear";
+		fuzzyString = "You're feeling a bit worse for the wear \n";
 	} else if (playerHealth >= 25 && playerHealth < 50){
-		fuzzyString = "You can no longer walk straight, every movement is painful";
+		fuzzyString = "You can no longer walk straight, every movement is painful \n";
 	} else if (playerHealth >= 1 && playerHealth < 25){
-		fuzzyString = "Standing is nearly impossible. Your vision is going red with the pain";
+		fuzzyString = "Standing is nearly impossible. Your vision is going red with the pain \n";
 	} else if (playerHealth == 0){
-		fuzzyString = "You are dead";
+		fuzzyString = "You are dead \n";
 	}
 
     }
