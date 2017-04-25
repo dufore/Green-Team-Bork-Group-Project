@@ -237,10 +237,7 @@ public class GameState {
     }
 
     String getEquipped() {
-        for (Item item : this.equipped) {
-            return item.getPrimaryName();
-        }
-        return null;
+        return this.equipped.toString();
     }
 
     String addItemToEquip(Item i) {

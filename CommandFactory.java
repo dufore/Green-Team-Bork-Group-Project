@@ -49,6 +49,9 @@ public class CommandFactory {
         if(verb.equals("talk")){
             return new TalkCommand(GameState.instance().getAdventurersCurrentRoom().getNPCS().get(0));
         }
+        if(verb.equals("fight")) {
+            return new FightCommand(GameState.instance().getEquipped(), GameState.instance().getAdventurersCurrentRoom().getNPCS().get(0).getName());
+        }
         if (parts.length == 2) {
             return new ItemSpecificCommand(verb, noun);
         }

@@ -32,10 +32,15 @@ public class FightCommand extends Command {
      */
     @Override
     String execute() {
-        try {
+        
             int attackValue = 0;
-            Item myWeapon = GameState.instance().getItemFromInventoryNamed(myWeaponName);
-            NonPlayerChar npc = GameState.instance().getNpcInVicinityNamed(npcName);
+            Item myWeapon;
+            try {
+                myWeapon = GameState.instance().getItemFromInventoryNamed(myWeaponName);
+            } catch (Item.NoItemException e) {
+                myWeapon = null;
+            }
+            NonPlayerChar npc = GameState.instance().getAdventurersCurrentRoom().getNPCS().get(0);
             int npcAttackValue = npc.getAttack();
 
             while (npc.getHealth() > 0 && GameState.instance().getHealth() > 0) {
@@ -43,7 +48,7 @@ public class FightCommand extends Command {
                     System.out.println("It is your turn.");
                     System.out.println("You currently have " + myWeapon + " equipped.");
 
-                    if (myWeapon.getEvent().equals("attack")) { //checks if item has an attack event
+                    if (myWeapon instanceof Weapon) { //checks if item has an attack event
                         attackValue = myWeapon.getEventNum(); // makes the attack value the eventNum
                         // attacks the npc
                     } else {
@@ -63,16 +68,13 @@ public class FightCommand extends Command {
             if (GameState.instance().getHealth() <= 0) {
                 GameState.instance().die();
             }
-            
+
             if (npc.getHealth() <= 0) {
                 System.out.println("You have killed " + npcName + "!");
                 GameState.instance().removeNPC(npc);
             }
 
-        } catch (NonPlayerChar.NoNPCException e) {
-            return npcName + " is not here!";
-        } catch (Item.NoItemException e) {
-        }
+        
         return null;
     }
 
