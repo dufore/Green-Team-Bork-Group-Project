@@ -11,12 +11,14 @@ public class Room {
     class NoRoomException extends Exception {}
 
     static String CONTENTS_STARTER = "Contents: ";
+    static String NPC_STARTER = "Npcs:";
 
     private String title;
     private String desc;
     private boolean beenHere;
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
+    private ArrayList<NonPlayerChar> NPCs;
 
     Room(String title) {
         init();
@@ -70,6 +72,21 @@ public class Room {
             } else {
                 desc += lineOfDesc + "\n";
             }
+
+	    //looking for npcs in the room
+	    if(lineOfDesc.startsWith(NPC_STARTER)) {
+		String npcList = lineOfDesc.substring(NPC_STARTER.length());
+		String[] npcNames = npcList.split(",");
+		for (String npcName : npcNames) {
+			try {
+				if (initState) {
+					add(d.getNPC(npcName));
+				}
+			} catch (NonPlayerChar.NoNPCException e) {
+				throw new Dungeon.IllegalDungeonFormatException(
+					"No such NPC '" + npcName + "'");
+			}
+		}
             lineOfDesc = s.nextLine();
         }
 
@@ -84,6 +101,7 @@ public class Room {
     private void init() {
         contents = new ArrayList<Item>();
         exits = new ArrayList<Exit>();
+	NPCs = new ArrayList<NonPlayerChar>();
         beenHere = false;
     }
 
@@ -169,6 +187,10 @@ public class Room {
     void add(Item item) {
         contents.add(item);
     }
+    
+    void add(NonPlayerChar npc) {
+	    NPCs.add(npc);
+    }
 
     void remove(Item item) {
         contents.remove(item);
@@ -187,13 +209,10 @@ public class Room {
         return contents;
     }
 
-    /*
-     * getter for NPCS in the room
-     *
-     * @return ArrayList<NPC> the ArrayList containing all of the NPCS in the room
-     */
-    //public ArrayList<NonPlayerChar> getNPCS(){
-      //  return null;
-    //}
+    ArrayList<NonPlayerChar> getNPCS() {
+	    return NPCs
+    }
+
+   
 }
  

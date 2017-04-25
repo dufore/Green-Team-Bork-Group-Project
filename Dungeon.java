@@ -235,8 +235,11 @@ public class Dungeon {
      *
      * @return ArrayList<NPC> returns an ArrayList of all the NPCs in the dungeon
      */
-    //public ArrayList<NonPlayerChar> getNPCS(){
-      //  return null;
-    //}
+    public NonPlayerChar getNPC(String npcName) throws NonPlayerChar.NoNPCException {
+        if (NPCs.get(npcName) == null) {
+		throw new NonPlayerChar.NoNPCException();
+	}
+	return NPCs.get(npcName);
+    }
 }
  
