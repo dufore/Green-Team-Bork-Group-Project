@@ -17,21 +17,21 @@ public class ScoreCommand extends Command{
     ScoreCommand(){
 	    playerScore = GameState.instance().getScore();
 	    if(playerScore >= 0 && playerScore < 15){
-		    playerRank = "F Class Adventurer";
+		    playerRank = "F Class Adventurer \n";
 	    }else if(playerScore >= 15 && playerScore < 30){
-		    playerRank = "D Class Adventurer";
+		    playerRank = "D Class Adventurer \n";
 	    }else if(playerScore >= 30 && playerScore < 45){
-		    playerRank = "C Class Adventurer";
+		    playerRank = "C Class Adventurer \n";
 	    }else if(playerScore >= 45 && playerScore < 60){
-		    playerRank = "B Class Adventurer";
+		    playerRank = "B Class Adventurer \n";
 	    }else if(playerScore >= 60 && playerScore < 90){
-		    playerRank = "A Class Adventurer";
+		    playerRank = "A Class Adventurer \n";
 	    }else if(playerScore >= 90 && playerScore < 120){
-		    playerRank = "S Class Adventurer";
+		    playerRank = "S Class Adventurer \n";
 	    }else if(playerScore >= 120 && playerScore < 200){
-		    playerRank = "SS Class Adventurer";
+		    playerRank = "SS Class Adventurer \n";
 	    }else if(playerScore >= 200){
-		    playerRank = "SSS Class Adventurer";
+		    playerRank = "SSS Class Adventurer \n";
 	    }
 
     }

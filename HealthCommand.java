@@ -17,7 +17,7 @@ public class HealthCommand extends Command{
     HealthCommand(){
         playerHealth = GameState.instance().getHealth();
 	if(playerHealth == 100){
-		fuzzyString = "You are the embodiment of health";
+		fuzzyString = "You are the embodiment of health \n";
 	} else if (playerHealth >= 75 && playerHealth < 100){
 		fuzzyString = "You've taken a small amount of damage";
 	} else if (playerHealth >= 50 && playerHealth < 75){
