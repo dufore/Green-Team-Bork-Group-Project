@@ -98,10 +98,10 @@ public class Room {
     }
 
     // Common object initialization tasks.
-    private void init() {
-        contents = new ArrayList<Item>();
-        exits = new ArrayList<Exit>();
-	NPCs = new ArrayList<NonPlayerChar>();
+    private void init(){
+        contents = new ArrayList<>();
+        exits = new ArrayList<>();
+	NPCs = new ArrayList<>();
         beenHere = false;
     }
 
@@ -210,9 +210,7 @@ public class Room {
     }
 
     ArrayList<NonPlayerChar> getNPCS() {
-	    return NPCs
+	    return NPCs;
     }
-
-   
 }
  
