@@ -107,9 +107,9 @@ public class NonPlayerChar {
     }
     
     private void init(){
-	    inventory = new ArrayList<Item>()
-	equipped = new ArrayList<Item>()
-	messages = new ArrayList<String>()
+	inventory = new ArrayList<Item>();
+	equipped = new ArrayList<Item>();
+	messages = new ArrayList<String>();
         this.hasTalked = false;
     }
      /**

@@ -3,38 +3,47 @@ Group Bork v1.0
 ===
 Items:
 Bomb
+95
 examine: The bomb is a heavy, gilstening black sphere. On the top appears to be some form of detonator.
 kick[Wound(2)]:Ouch! That hurt your foot.
 detonate[Die]:An ear-splitting halo of shrapnel kills you and seriously degrades the room's interior.
 ---
-ShortSword 15 
+ShortSword
+15
 attack[Fight(12)]
 Eat[Disappear,Wound(150)]:Ouch!
 ---
-LightSaber 5 
+LightSaber
+5
 attack[Fight(27)]
 Eat[Disappear,Wound(2)]:Ouch!
 ---
-JediRobe 10 
+JediRobe
+10
 Defense:10
 ---
-donut 10 
+donut
+10
 eat[Disappear,Wound(-5)]:YUM!
 examine:A delicious looking donut with rainbow sprinkles on top.
 stomp:The donut is now smooshed.
 ---
-SackOfPotatoes 
+SackOfPotatoes
+15
 eat[Disappear,Wound(-15)]:That was a lot of potatoes.
 ---
-EmptyCan 1
+EmptyCan
+1
 kick:The can skitters down the hallway.
 ---
-DrPepper 10 
+DrPepper
+10
 drink[Transform(EmptyCan),Wound(-1)]:Fizzy.
 kick:The can skitters down the hallway.
 shake:A liquid fizzes menacingly inside the can.
 ---
 StarWarsMagazine
+3
 examine:A totally rad magazine all about the Star Wars franchise.
 ---
 ===
@@ -49,7 +58,7 @@ Messages:Hello there. I am Stephen Davies and I love Star Wars so much. I even l
 Trades:SackOfPotatoes,Bomb
 ---
 Ogre
-40 
+40
 10
 5
 Inventory:SackOfPotatoes

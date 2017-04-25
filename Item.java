@@ -19,7 +19,7 @@ public class Item {
             Dungeon.IllegalDungeonFormatException {
 
         messages = new Hashtable<String, String>();
-
+        
         // Read item name.
         primaryName = s.nextLine();
         if (primaryName.equals(Dungeon.TOP_LEVEL_DELIM)) {
@@ -27,7 +27,7 @@ public class Item {
         }
 
         // Read item weight.
-        // weight = Integer.valueOf(s.nextLine());
+        weight = Integer.parseInt(s.nextLine());
         // Read and parse verbs lines, as long as there are more.
         String verbLine = s.nextLine();
         while (!verbLine.equals(Dungeon.SECOND_LEVEL_DELIM)) {
