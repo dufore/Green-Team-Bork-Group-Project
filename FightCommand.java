@@ -32,49 +32,49 @@ public class FightCommand extends Command {
      */
     @Override
     String execute() {
+        int attackValue;
+        Item myWeapon;
+        NonPlayerChar npc = GameState.instance().getAdventurersCurrentRoom().getNPCS().get(0);
+        int npcAttackValue = npc.getAttack();
         
-            int attackValue = 0;
-            Item myWeapon;
-            try {
-                myWeapon = GameState.instance().getItemFromInventoryNamed(myWeaponName);
-            } catch (Item.NoItemException e) {
-                myWeapon = null;
-            }
-            NonPlayerChar npc = GameState.instance().getAdventurersCurrentRoom().getNPCS().get(0);
-            int npcAttackValue = npc.getAttack();
+        try {
+            myWeapon = GameState.instance().getItemFromInventoryNamed(myWeaponName);
+        } catch (Item.NoItemException e) {
+            myWeapon = null;
+        }
 
-            while (npc.getHealth() > 0 && GameState.instance().getHealth() > 0) {
-                if (myTurn) { // if myTurn then player attacks
-                    System.out.println("It is your turn.");
-                    System.out.println("You currently have " + myWeapon + " equipped.");
+        while (npc.getHealth() > 0 && GameState.instance().getHealth() > 0) {
+            if (myTurn) { // if myTurn then player attacks
+                System.out.println("It is your turn.");
 
-                    if (myWeapon instanceof Weapon) { //checks if item has an attack event
-                        attackValue = myWeapon.getEventNum(); // makes the attack value the eventNum
-                        // attacks the npc
-                    } else {
-                        attackValue = 1;
-                    }
-                    npc.woundHealth(attackValue);
-                    System.out.println("You dealt " + attackValue + " damage!");
-                    myTurn = false; // makes myTurn false so the npc attacks next
-
-                } else { //if myTurn is false then the npc attacks
-                    GameState.instance().woundHealth(npcAttackValue);
-                    System.out.println("You took " + npcAttackValue + " damage!");
-                    myTurn = true; // makes myTurn true so the Player attacks next
+                if (myWeapon == null) {
+                    attackValue = 1;
+                } else {
+                    attackValue = myWeapon.getItemAttack();
                 }
-            }
+                npc.woundHealth(attackValue);
+                System.out.println("You dealt " + attackValue + " damage!");
+                System.out.println();
+                myTurn = false; // makes myTurn false so the npc attacks next
 
-            if (GameState.instance().getHealth() <= 0) {
-                GameState.instance().die();
+            } else { //if myTurn is false then the npc attacks
+                GameState.instance().woundHealth(npcAttackValue);
+                System.out.println(npc.getName() + " attacked you.");
+                System.out.println("You took " + npcAttackValue + " damage!");
+                System.out.println();
+                myTurn = true; // makes myTurn true so the Player attacks next
             }
+        }
 
-            if (npc.getHealth() <= 0) {
-                System.out.println("You have killed " + npcName + "!");
-                GameState.instance().removeNPC(npc);
-            }
+        if (GameState.instance().getHealth() <= 0) {
+            GameState.instance().die();
+        }
 
-        
+        if (npc.getHealth() <= 0) {
+            System.out.println("You have killed " + npcName + "!");
+            GameState.instance().removeNPC(npc);
+        }
+
         return null;
     }
 

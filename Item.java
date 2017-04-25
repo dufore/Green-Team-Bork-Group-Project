@@ -14,6 +14,7 @@ public class Item {
     private int eventNum; //Some events have values in paranthesis.  Grab that value and store it here to be passed into event constructor
     private String event2;
     private Hashtable<String, String> messages;
+    private int attack;
 
     Item(Scanner s) throws NoItemException,
             Dungeon.IllegalDungeonFormatException {
@@ -28,6 +29,8 @@ public class Item {
 
         // Read item weight.
         weight = Integer.parseInt(s.nextLine());
+        // Read item attack.
+        attack = Integer.parseInt(s.nextLine());
         // Read and parse verbs lines, as long as there are more.
         String verbLine = s.nextLine();
         while (!verbLine.equals(Dungeon.SECOND_LEVEL_DELIM)) {
@@ -98,5 +101,9 @@ public class Item {
 
     public String getEventTwo() {
         return this.event2;
+    }
+    
+    public int getItemAttack() {
+        return this.attack;
     }
 }
