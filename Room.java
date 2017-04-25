@@ -218,10 +218,7 @@ public class Room {
         return contents;
     }
 
-    NonPlayerChar getNPCS() {
-        for(NonPlayerChar NPC : this.NPCs){
-            return NPC;
-        }
-        return null;
+    ArrayList<NonPlayerChar> getNPCS() {
+        return this.NPCs;
     }
 }

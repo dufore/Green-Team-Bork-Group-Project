@@ -41,13 +41,13 @@ public class CommandFactory {
             return new MovementCommand(verb);
         }
 	if (verb.equals("score")){
-		return new ScoreCommand();
+            return new ScoreCommand();
 	}
 	if (verb.equals("health")){
-		return new HealthCommand();
+            return new HealthCommand();
 	}
         if(verb.equals("talk")){
-            retrun new TalkCommand(GameState.instance().getAdventurersCurrentRoom().getNPCS());
+            return new TalkCommand(GameState.instance().getAdventurersCurrentRoom().getNPCS().get(0));
         }
         if (parts.length == 2) {
             return new ItemSpecificCommand(verb, noun);
