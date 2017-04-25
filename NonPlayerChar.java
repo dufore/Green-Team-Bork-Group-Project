@@ -37,6 +37,9 @@ public class NonPlayerChar {
 
     public NonPlayerChar(Scanner s,Dungeon d) throws NoNPCException,
 	   Dungeon.IllegalDungeonFormatException{
+
+		   init();
+
 		   String line = s.nextLine();
 		   if(line.equals(HIGH_LEVEL_DELIMITER)){
 			   throw new NoNPCException();
@@ -104,6 +107,9 @@ public class NonPlayerChar {
     }
     
     private void init(){
+	    inventory = new ArrayList<Item>()
+	equipped = new ArrayList<Item>()
+	messages = new ArrayList<String>()
         this.hasTalked = false;
     }
      /**
