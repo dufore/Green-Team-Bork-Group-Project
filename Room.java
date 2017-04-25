@@ -84,17 +84,16 @@ public class Room {
                                 "No such NPC '" + npcName + "'");
                     }
                 }
-                
-            } else {
-		    desc += lineOfDesc + "\n";
-	    }
-	    lineOfDesc = s.nextLine();
 
-            // throw away delimiter
-            if (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM)) {
-                throw new Dungeon.IllegalDungeonFormatException("No '"
-                        + Dungeon.SECOND_LEVEL_DELIM + "' after room.");
+            } else {
+                desc += lineOfDesc + "\n";
             }
+            lineOfDesc = s.nextLine();
+        }
+        // throw away delimiter
+        if (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM)) {
+            throw new Dungeon.IllegalDungeonFormatException("No '"
+                    + Dungeon.SECOND_LEVEL_DELIM + "' after room.");
         }
     }
 

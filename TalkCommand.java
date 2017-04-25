@@ -24,7 +24,7 @@ public class TalkCommand extends Command{
      */
     @Override
     String execute(){
-        String returnVal = this.NPC.getMessage();
+        String returnVal = this.NPC.getMessage() + "\n";
         return returnVal;
     }
 }
