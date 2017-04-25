@@ -71,12 +71,7 @@ public class Room {
                                 "No such item '" + itemName + "'");
                     }
                 }
-            } else {
-                desc += lineOfDesc + "\n";
-            }
-
-            //looking for npcs in the room
-            if (lineOfDesc.startsWith(NPC_STARTER)) {
+            } else if (lineOfDesc.startsWith(NPC_STARTER)) {
                 String npcList = lineOfDesc.substring(NPC_STARTER.length());
                 String[] npcNames = npcList.split(",");
                 for (String npcName : npcNames) {
@@ -89,8 +84,11 @@ public class Room {
                                 "No such NPC '" + npcName + "'");
                     }
                 }
-                lineOfDesc = s.nextLine();
-            }
+                
+            } else {
+		    desc += lineOfDesc + "\n";
+	    }
+	    lineOfDesc = s.nextLine();
 
             // throw away delimiter
             if (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM)) {
