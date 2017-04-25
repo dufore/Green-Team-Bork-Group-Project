@@ -29,7 +29,8 @@ public class Weapon extends Item {
         super(s);
         name = s.next();
         points = Integer.valueOf(s.next());
-        attack = Integer.valueOf(s.next());
+        String[] nextLine = s.nextLine().split(":");
+        attack = Integer.valueOf(nextLine[2]);
 
         while (!s.nextLine().equals(Dungeon.SECOND_LEVEL_DELIM)
                 && !s.nextLine().equals(Dungeon.TOP_LEVEL_DELIM)) {

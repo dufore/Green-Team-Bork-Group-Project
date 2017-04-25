@@ -39,7 +39,7 @@ public class GameState {
     private ArrayList<Item> inventory;
     private Item[] equipped;
     private Room adventurersCurrentRoom;
-    
+
     private ArrayList<NonPlayerChar> NPCs;
 
     private int health;
@@ -206,15 +206,16 @@ public class GameState {
 
     /**
      * Method that will check to see if the players health is at 0; if so,
-     * method will return a string telling the player they have died and will
-     * end the game. Returns string value
+     * method will print strings telling the player their score, 
+     * they have died and will end the game.
      *
-     * @return deathString
      */
-    String die() {
-        return null;
+    void die() {
+        System.out.println("You have died.");
+        System.out.println("Your score is " + score);
+        System.exit(0);
     }
-
+    
     /**
      * Method that will check the player's score and return it to them so that
      * they can see how far they are.
@@ -234,20 +235,20 @@ public class GameState {
     int getHealth() {
         return this.health;
     }
-    
-    String getEquipped(){
+
+    String getEquipped() {
         for (Item item : this.equipped) {
             return item.getPrimaryName();
         }
         return null;
     }
-    
-    String addItemToEquip(Item i){
+
+    String addItemToEquip(Item i) {
         String itemAdded;
-        if(this.equipped.length == 0){
+        if (this.equipped.length == 0) {
             this.equipped[0] = i;
             itemAdded = "You have equipped " + i.getPrimaryName();
-        } else if (this.equipped.length == 1){
+        } else if (this.equipped.length == 1) {
             this.equipped[1] = i;
             itemAdded = "You have equipped " + i.getPrimaryName();
         } else {
@@ -255,10 +256,10 @@ public class GameState {
         }
         return itemAdded;
     }
-    
-    String removeItemFromEquip(Item i){
+
+    String removeItemFromEquip(Item i) {
         String itemRemoved;
-        if(Arrays.asList(this.equipped).contains(i)){
+        if (Arrays.asList(this.equipped).contains(i)) {
             List<Item> list = new ArrayList<Item>(Arrays.asList(this.equipped));
             list.removeAll(Arrays.asList(i));
             this.equipped = list.toArray(this.equipped);
@@ -268,9 +269,20 @@ public class GameState {
         }
         return itemRemoved;
     }
-    
-    void removeNPC(NonPlayerChar t){
-        if(this.NPCs.contains(t)){
+
+    NonPlayerChar getNpcInVicinityNamed(String npcName) 
+            throws NonPlayerChar.NoNPCException {
+        for (NonPlayerChar npc : this.NPCs) {
+            if (npc.getName().equals(npcName)) {
+                return npc;
+            }
+        }
+
+        throw new NonPlayerChar.NoNPCException();
+    }
+
+    void removeNPC(NonPlayerChar t) {
+        if (this.NPCs.contains(t)) {
             this.NPCs.remove(t);
         } else {
             System.out.println("NPC does not exist here.");

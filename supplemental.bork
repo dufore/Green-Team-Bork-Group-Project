@@ -2,17 +2,17 @@ Hall of Colors
 Group Bork v1.0
 ===
 Items:
-Bomb 50
+Bomb
 examine: The bomb is a heavy, gilstening black sphere. On the top appears to be some form of detonator.
 kick[Wound(2)]:Ouch! That hurt your foot.
 detonate[Die]:An ear-splitting halo of shrapnel kills you and seriously degrades the room's interior.
 ---
 ShortSword 15 
-Attack:12
+attack[Fight(12)]
 Eat[Disappear,Wound(150)]:Ouch!
 ---
 LightSaber 5 
-Attack:27
+attack[Fight(27)]
 Eat[Disappear,Wound(2)]:Ouch!
 ---
 JediRobe 10 
@@ -23,16 +23,19 @@ eat[Disappear,Wound(-5)]:YUM!
 examine:A delicious looking donut with rainbow sprinkles on top.
 stomp:The donut is now smooshed.
 ---
-SackOfPotatoes 25 
+SackOfPotatoes 
 eat[Disappear,Wound(-15)]:That was a lot of potatoes.
 ---
 EmptyCan 1
 kick:The can skitters down the hallway.
 ---
 DrPepper 10 
-eat[Transform(EmptyCan),Wound(-1)]:Fizzy.
+drink[Transform(EmptyCan),Wound(-1)]:Fizzy.
 kick:The can skitters down the hallway.
 shake:A liquid fizzes menacingly inside the can.
+---
+StarWarsMagazine
+examine:A totally rad magazine all about the Star Wars franchise.
 ---
 ===
 Npcs:

@@ -7,7 +7,7 @@ package zeitz_borkv3;
  */
 class DieEvent extends Event {
 
-    // private NonPlayerChar target;
+    private NonPlayerChar target;
     String diedString;
 
     /*Constructor for DieEvent
@@ -21,6 +21,7 @@ class DieEvent extends Event {
     }
 
      DieEvent(NonPlayerChar t) {
+        this.target = t;
         String died = onTrigger();
         if (died.equals("You have died! Game Over!")) {
         System.exit(0);
